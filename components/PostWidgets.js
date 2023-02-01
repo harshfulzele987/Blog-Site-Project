@@ -14,20 +14,27 @@ function PostWidgets({categories ,slug}) {
   }
 
 
-  useEffect( async () => {
-    try {
-      if (slug) {
-          const result = await getSimilarPosts(temp_categoris, slug);
-          console.log("result-->" , result);
-          setRelatedPosts(result);
-      } else {
-          const result = await getRecentPosts();
-          setRelatedPosts(result);
-      }
-  } catch (error) {
-      console.log(error);
-  }
+  useEffect(  () => {
+   ( async() => {
+
+      try {
+        if (slug) {
+            const result = await getSimilarPosts(temp_categoris, slug);
+            console.log("result-->" , result);
+            setRelatedPosts(result);
+        } else {
+            const result = await getRecentPosts();
+            setRelatedPosts(result);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    } )();
+    
   }, [slug]);
+
+  
   // getRecentPosts().then((result) => {setRelatedPosts(result);})
   //     .catch((err)=>{console.log(err)});;
 
@@ -51,8 +58,7 @@ function PostWidgets({categories ,slug}) {
       
   //     }).catch((err)=>{console.log(err)});
   const grpahCMSImageLoader = ({ src }) => src;
-  console.log('related posts')
-  console.log( relatedPosts);
+  
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 mb-8'>
       <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
