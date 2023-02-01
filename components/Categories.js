@@ -22,9 +22,9 @@ export default function Categories() {
       Categories
       </div>
 
-      {categories.map((index) => {
+      {categories.map((index , newIndex) => {
         return (
-          <span className='cursor-pointer block'>
+          <span className='cursor-pointer block' key={newIndex}>
             {index.name}
             
             </span>

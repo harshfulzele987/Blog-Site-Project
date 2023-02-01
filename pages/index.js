@@ -23,10 +23,10 @@ export default function Home({ posts }) {
       <FeaturedPosts />
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='lg:col-span-8 col-sapn-1'>
-          {posts.map((post) => {
+          {posts.map((post , index) => {
             return (
-              <div>
-                <PostCards post={post.node} />
+              <div key={index}>
+                <PostCards  post={post.node} />
               </div>
             )
           })
